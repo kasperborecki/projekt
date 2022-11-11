@@ -27,6 +27,7 @@ const Card = () => {
         console.log(data)
         setFormError(null)
     } 
+    window.location.reload()
 };
 
   return (
