@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 
 import TaskCard from './TaskCard'
 import supabase from '../supabaseClient'
 import { useEffect, useState } from 'react'
 
 const TaskList = () => {
-  const [fetchError, setFetchError] = useState(null)
-  const [taski, setTaski] = useState(null)
+  const [fetchError, setFetchError] = useState(null);
+  const [taski, setTaski] = useState(null);
 
   useEffect(() => {
     const fetchTaski = async () => {
