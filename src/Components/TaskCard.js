@@ -21,7 +21,7 @@ const TaskCard = ({ task }) => {
         window.location.reload(false);
     }
         window.location.reload()
-}
+};
 
     return (
         <div className="w-12/12">
