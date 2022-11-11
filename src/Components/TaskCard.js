@@ -19,6 +19,7 @@ const TaskCard = ({ task }) => {
     if (data){
         console.log(data)
     }
+    
     window.location.reload()
 }
 

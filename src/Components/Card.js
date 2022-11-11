@@ -29,6 +29,7 @@ const Card = () => {
     } 
 
     window.location.reload()
+    
 };
 
   return (
