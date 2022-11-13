@@ -4,7 +4,7 @@ import { CgTrash } from "react-icons/cg";
 import { AiFillEdit } from "react-icons/ai";
 import supabase from "../supabaseClient";
 
-const TaskCard = ({ task }) => {
+const TaskCard = ({ task, onDelete }) => {
 
     const handleDelete = async () => {
 
@@ -18,9 +18,8 @@ const TaskCard = ({ task }) => {
     }
     if (data){
         console.log(data)
+        onDelete(task.id)
     }
-    
-    window.location.reload()
 }
 
     return (

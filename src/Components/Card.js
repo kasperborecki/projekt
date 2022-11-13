@@ -2,9 +2,8 @@ import { useState } from "react"
 
 import supabase from "../supabaseClient"
 
-const Card = () => {
+const Card = ({title, setTitle}) => {
 
-  const [title, setTitle] = useState('')
   const [formError, setFormError] = useState(null)
 
   const handleSubmit = async (event) => {
@@ -27,8 +26,6 @@ const Card = () => {
         console.log(data)
         setFormError(null)
     } 
-
-    window.location.reload()
     
 };
 

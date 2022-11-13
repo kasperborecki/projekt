@@ -1,16 +1,24 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 
 import TaskCard from './TaskCard'
 import supabase from '../supabaseClient'
 import { useEffect, useState } from 'react'
 
-const TaskList = () => {
+const TaskList = ({taski, setTaski, title}) => {
   const [fetchError, setFetchError] = useState(null);
-  const [taski, setTaski] = useState(null);
+ 
+
+ const handleDelete = (id) => {
+
+  setTaski(prevTaski => {
+    return prevTaski.filter(taski => taski.id !== id)
+  })
+
+ }
 
   useEffect(() => {
     const fetchTaski = async () => {
-      let { data: taski, error } = await supabase
+      let { data, error } = await supabase
         .from('taski')
         .select('title, id')
       
@@ -18,16 +26,15 @@ const TaskList = () => {
         setFetchError('Nie znaleziono zadań')
         setTaski(null)
       }
-      if (taski) {
-        setTaski(taski)
+      if (data) {
+        setTaski(data)
         setFetchError(null)
       }
     }
 
     fetchTaski()
-    console.log(taski)
 
-  }, [])
+  }, [title, taski])
 
   return (
     <div className="font-mono">
@@ -37,7 +44,9 @@ const TaskList = () => {
           <div>
             {taski.map(task => (
              <TaskCard 
-             key={task.id} task={task}
+             key={task.id} 
+             task={task}
+             onDelete={handleDelete}
              />
             ))}
           </div>
